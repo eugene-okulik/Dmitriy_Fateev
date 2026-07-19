@@ -6,7 +6,7 @@ my_dict = {'tuple': (1, 2, 3, 4, 5), 'list': [1, 2, 3, 4, 5],
 my_dict['list'].append(6)
 my_dict['list'].pop(1)
 
-my_dict['dict']['i am a tuple'] = 6
+my_dict['dict'][('i am a tuple',)] = 6
 my_dict['dict'].pop('fourth_key')
 
 my_dict['set'].add(7)
