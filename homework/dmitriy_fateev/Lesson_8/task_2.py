@@ -9,4 +9,5 @@ def fibonacci(n):
         a, b = b, a + b
     return b
 
+
 print(fibonacci(5), fibonacci(200), fibonacci(1000), fibonacci(10000))
