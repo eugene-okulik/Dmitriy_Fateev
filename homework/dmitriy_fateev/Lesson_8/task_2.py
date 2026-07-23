@@ -10,5 +10,4 @@ def fibonacci(n):
     return b
 
 
-
 print(fibonacci(5), fibonacci(200), fibonacci(1000), fibonacci(100000))
