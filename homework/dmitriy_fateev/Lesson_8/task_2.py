@@ -1,13 +1,19 @@
-def fibonacci(n):
-    if n <= 0:
-        return 0
-    if n == 1:
-        return 1
+import sys
 
-    a, b = 0, 1
-    for i in range(n - 1):
-        a, b = b, a + b
-    return b
+sys.set_int_max_str_digits(21000)
 
 
-print(fibonacci(5), fibonacci(200), fibonacci(1000), fibonacci(100000))
+def fibonacci(limit):
+    first, second = 0, 1
+    count = 1
+    while count <= limit:
+        yield first
+        first, second = second, first + second
+        count += 1
+
+
+TARGETS = [5, 20, 1000, 100000]
+
+for step, number in enumerate(fibonacci(100000), start=1):
+    if step in TARGETS:
+        print(number)
