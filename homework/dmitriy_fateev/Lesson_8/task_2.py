@@ -12,7 +12,7 @@ def fibonacci(limit):
         count += 1
 
 
-TARGETS = [5, 20, 1000, 100000]
+TARGETS = [5, 200, 1000, 100000]
 
 for step, number in enumerate(fibonacci(100000), start=1):
     if step in TARGETS:
