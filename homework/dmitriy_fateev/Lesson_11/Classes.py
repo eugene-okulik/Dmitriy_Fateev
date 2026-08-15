@@ -10,7 +10,8 @@ class Book:
         self.reserved = reserved
 
     def __str__(self):
-        info = f"Название: {self.name}, Автор: {self.author}, страниц: {self.page_count}, материал: {self.page_material}"
+        info = (f"Название: {self.name}, Автор: {self.author},"
+                f" страниц: {self.page_count}, материал: {self.page_material}")
         if self.reserved:
             info += ", зарезервирована"
         return info
@@ -24,7 +25,8 @@ class SchoolBook(Book):
         self.has_tasks = has_tasks
 
     def __str__(self):
-        info = f"Название: {self.name}, Автор: {self.author}, страниц: {self.page_count}, предмет: {self.subject}, класс: {self.grade}"
+        info = (f"Название: {self.name}, Автор: {self.author},"
+                f" страниц: {self.page_count}, предмет: {self.subject}, класс: {self.grade}")
         if self.reserved:
             info += ", зарезервирована"
         return info
