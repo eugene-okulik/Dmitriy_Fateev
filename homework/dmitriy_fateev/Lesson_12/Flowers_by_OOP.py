@@ -79,27 +79,27 @@ class Bouquet:
 
     def print_lifetime_sort(self):
         print(" СОРТИРОВКА ПО ВРЕМЕНИ ЖИЗНИ (убывание) ")
-        for flower in bouquet.lifetime_sort():
+        for flower in self.lifetime_sort():
             print(f"  {flower.name} - {flower.life_time} дней")
 
     def print_freshness_sort(self):
         print("\n СОРТИРОВКА ПО СВЕЖЕСТИ (убывание) ")
-        for flower in bouquet.freshness_sort():
+        for flower in self.freshness_sort():
             print(f"  {flower.name} - свежесть: {flower.freshness}")
 
     def print_length_sort(self):
         print("\n СОРТИРОВКА ПО ДЛИНЕ СТЕБЛЯ (убывание) ")
-        for flower in bouquet.length_sort():
+        for flower in self.length_sort():
             print(f"  {flower.name} - длина: {flower.stem_length} см")
 
     def print_price_sort(self):
         print("\n СОРТИРОВКА ПО ЦЕНЕ (возрастание) ")
-        for flower in bouquet.price_sort():
+        for flower in self.price_sort():
             print(f"  {flower.name} - {flower.price} руб.")
 
     def print_color_search(self, color):
         print("\n ПОИСК ПО ЦВЕТУ ")
-        colored_flowers = bouquet.color_search(color)
+        colored_flowers = self.color_search(color)
         if colored_flowers:
             for flower in colored_flowers:
                 print(f"  {flower.name} - {flower.color}")
@@ -108,7 +108,7 @@ class Bouquet:
 
     def print_lifetime_search(self, min_lifetime, max_lifetime):
         print("\nПОИСК ПО ВРЕМЕНИ ЖИЗНИ")
-        lifetime_flowers = bouquet.lifetime_search(min_lifetime, max_lifetime)
+        lifetime_flowers = self.lifetime_search(min_lifetime, max_lifetime)
         if lifetime_flowers:
             for flower in lifetime_flowers:
                 print(f"  {flower.name} - {flower.life_time} дней")
@@ -117,7 +117,7 @@ class Bouquet:
 
     def print_freshness_search(self, freshness):
         print("\n ПОИСК ПО СВЕЖЕСТИ ")
-        fresh_flowers = bouquet.freshness_search(freshness)
+        fresh_flowers = self.freshness_search(freshness)
         if fresh_flowers:
             for flower in fresh_flowers:
                 print(f"  {flower.name} - свежесть: {flower.freshness}")
