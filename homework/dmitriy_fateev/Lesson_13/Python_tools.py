@@ -16,7 +16,6 @@ LINE = read_file()
 
 
 def parse_date(line):
-    line = line.strip()
     return datetime.strptime(line, "%Y-%m-%d %H:%M:%S.%f")
 
 
@@ -36,10 +35,9 @@ STEPS = [task_1, task_2, task_3]
 
 
 for step_number, step in enumerate(STEPS):
-    this_line = ""
     try:
         this_line = next(LINE)
         step(parse_date(this_line))
 
     except ValueError as e:
-        print(f"Ошибка на шаге {step_number} (строка: '{this_line}'): {e}")
+        print(f"Ошибка в строке {step_number + 1}: {e}")
