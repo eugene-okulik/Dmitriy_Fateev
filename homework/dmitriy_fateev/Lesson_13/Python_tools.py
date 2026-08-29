@@ -1,15 +1,17 @@
+import os
 from datetime import datetime, timedelta
 
 
-NOW = datetime.now()
 DAYS_OF_WEEK = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
 
+base_path = os.path.dirname(__file__)
+homework_path = os.path.dirname(os.path.dirname(base_path))
+datafile_path = os.path.join(homework_path, "eugene_okulik", "hw_13", "data.txt")
 
 def read_file():
-    path = "../../eugene_okulik/hw_13/data.txt"
-    with open(path, 'r', encoding='utf-8') as data_file:
+    with open(datafile_path, 'r', encoding='utf-8') as data_file:
         for line in data_file:
-            yield line[3:28]
+            yield f'{line.split()[1]} {line.split()[2]}'
 
 
 LINE = read_file()
@@ -28,11 +30,10 @@ def task_2(date):
 
 
 def task_3(date):
-    print(f"3. Было дней назад: {(NOW - date).days}")
+    print(f"3. Было дней назад: {(datetime.now() - date).days}")
 
 
 STEPS = [task_1, task_2, task_3]
-
 
 for step_number, step in enumerate(STEPS):
     try:
