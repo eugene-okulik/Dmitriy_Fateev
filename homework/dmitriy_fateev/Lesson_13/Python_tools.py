@@ -8,6 +8,7 @@ base_path = os.path.dirname(__file__)
 homework_path = os.path.dirname(os.path.dirname(base_path))
 datafile_path = os.path.join(homework_path, "eugene_okulik", "hw_13", "data.txt")
 
+
 def read_file():
     with open(datafile_path, 'r', encoding='utf-8') as data_file:
         for line in data_file:
