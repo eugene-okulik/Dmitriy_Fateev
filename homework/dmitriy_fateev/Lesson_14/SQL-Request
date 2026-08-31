@@ -1,0 +1,9 @@
+-- select * from marks where student_id = '23122';
+-- select * from books where taken_by_student_id = '23122';
+SELECT * FROM students
+JOIN books ON students.id = books.taken_by_student_id
+JOIN `groups` ON students.group_id = `groups`.id
+JOIN marks ON students.id = marks.student_id
+JOIN lessons ON marks.lesson_id = lessons.id
+JOIN subjects ON lessons.subject_id = subjects.id
+WHERE students.id = 23122;
