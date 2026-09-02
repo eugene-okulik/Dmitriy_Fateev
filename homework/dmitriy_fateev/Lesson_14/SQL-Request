@@ -1,0 +1,21 @@
+-- insert into students (name, second_name) values ('John', 'Brittle')
+-- insert into books (title, taken_by_student_id) values ('1984', '23122')
+-- insert into books (title, taken_by_student_id) values ('Дом в котором...', '23122')
+-- insert into `groups` (title, start_date, end_date) values ('cool_guys', 'may 2026', 'oct 2026')
+-- update students set group_id = '23102' where id = '23122'
+-- insert into subjects (title) values ('speleology'), ('mountaineering'), ('natural science')
+-- insert into lessons (title, subject_id) VALUES ('speleology basics', '23249'), ('speleology practice', '23249')
+-- insert into lessons (title, subject_id) values ('mountaineering basics', '23250'), ('mountaineering practice', '23250')
+-- insert into lessons (title, subject_id) values ('natural science basics', '23251'), ('natural science practice', '23251')
+-- insert into marks (value, lesson_id, student_id) values ('5', '76582', '23122'), ('5', '76583', '23122')
+-- insert into marks (value, lesson_id, student_id) values ('4', '76584', '23122'), ('5', '76585', '23122')
+-- insert into marks (value, lesson_id, student_id) values ('5', '76586', '23122'), ('5', '76587', '23122')
+-- select * from marks where student_id = '23122';
+-- select * from books where taken_by_student_id = '23122';
+SELECT * FROM students
+JOIN books ON students.id = books.taken_by_student_id
+JOIN `groups` ON students.group_id = `groups`.id
+JOIN marks ON students.id = marks.student_id
+JOIN lessons ON marks.lesson_id = lessons.id
+JOIN subjects ON lessons.subject_id = subjects.id
+WHERE students.id = '23122'
