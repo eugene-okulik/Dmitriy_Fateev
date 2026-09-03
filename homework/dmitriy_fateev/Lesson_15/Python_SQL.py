@@ -1,5 +1,6 @@
 import mysql.connector as mysql
 
+
 db = mysql.connect(
     user='st-onl',
     passwd='AVNS_tegPDkI5BlB2lW5eASC',
@@ -47,7 +48,7 @@ db.commit()
 
 cursor.execute("SELECT id FROM lessons WHERE subject_id IN (%s, %s, %s) ORDER BY id",
                (subject_ids[0], subject_ids[1], subject_ids[2]))
-lesson_ids = [row[0] for row in cursor.fetchall()]
+lesson_ids = [row['id'] for row in cursor.fetchall()]
 
 marks_data = [
     ('5', lesson_ids[0], student_id),
