@@ -40,7 +40,7 @@ cursor.execute("""
     INSERT INTO lessons (title, subject_id) VALUES
     ('speleology basics', %s), ('speleology practice', %s),
     ('mountaineering basics', %s), ('mountaineering practice', %s),
-    ('natural science basics', %s), ('natural science practice', %s)""",(
+    ('natural science basics', %s), ('natural science practice', %s)""", (
     subject_ids[0], subject_ids[0],
     subject_ids[1], subject_ids[1],
     subject_ids[2], subject_ids[2]))
