@@ -37,10 +37,10 @@ for subject in subjects:
 db.commit()
 
 cursor.execute("""
-    INSERT INTO lessons (title, subject_id) VALUES 
+    INSERT INTO lessons (title, subject_id) VALUES
     ('speleology basics', %s), ('speleology practice', %s),
-    ('mountaineering basics', %s), ('mountaineering practice', %s), 
-    ('natural science basics', %s), ('natural science practice', %s)""", (
+    ('mountaineering basics', %s), ('mountaineering practice', %s),
+    ('natural science basics', %s), ('natural science practice', %s)""",(
     subject_ids[0], subject_ids[0],
     subject_ids[1], subject_ids[1],
     subject_ids[2], subject_ids[2]))
@@ -75,7 +75,7 @@ for book in books:
     print(f"  {book}")
 
 query = '''
-    SELECT 
+    SELECT
         students.id as student_id, students.name, students.second_name,
         `groups`.title as group_title, `groups`.start_date, `groups`.end_date,
         books.title as book_title, marks.value as mark_value, lessons.title as lesson_title,
