@@ -15,10 +15,8 @@ cursor.execute("INSERT INTO students (name, second_name) VALUES ('John', 'Brittl
 db.commit()
 student_id = cursor.lastrowid
 
-cursor.execute("INSERT INTO books (title, taken_by_student_id) VALUES ('1984', %s)",
-               (student_id,))
-cursor.execute("INSERT INTO books (title, taken_by_student_id) VALUES ('Дом в котором...', %s)",
-               (student_id,))
+books = [('1984', student_id), ('Дом в котором...', student_id)]
+cursor.executemany("INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)", books)
 db.commit()
 
 cursor.execute("INSERT INTO `groups` (title, start_date, end_date) values ('cool_guys', 'may 2026', 'oct 2026')")
