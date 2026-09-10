@@ -1,5 +1,7 @@
 import mysql.connector as mysql
-import os, dotenv, csv
+import os
+import dotenv
+import csv
 
 
 base_path = os.path.dirname(__file__)
@@ -28,18 +30,18 @@ reading_file = read_file(datafile_path)
 columns = next(reading_file)
 
 query = """
-SELECT * FROM students 
-JOIN `groups` ON students.group_id = `groups`.id 
-JOIN books ON students.id = books.taken_by_student_id 
-JOIN marks ON students.id = marks.student_id 
-JOIN lessons ON marks.lesson_id = lessons.id 
-JOIN subjects ON lessons.subject_id = subjects.id 
-WHERE students.name = %s 
-  AND students.second_name = %s 
-  AND `groups`.title = %s 
-  AND books.title = %s 
-  AND subjects.title = %s 
-  AND lessons.title = %s 
+SELECT * FROM students
+JOIN `groups` ON students.group_id = `groups`.id
+JOIN books ON students.id = books.taken_by_student_id
+JOIN marks ON students.id = marks.student_id
+JOIN lessons ON marks.lesson_id = lessons.id
+JOIN subjects ON lessons.subject_id = subjects.id
+WHERE students.name = %s
+  AND students.second_name = %s
+  AND `groups`.title = %s
+  AND books.title = %s
+  AND subjects.title = %s
+  AND lessons.title = %s
   AND marks.value = %s
 """
 
