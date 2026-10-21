@@ -13,7 +13,7 @@ def new_object_id():
     object_id = response['id']
     print(object_id)
     yield object_id
-    print('deleting the object')
+    print('\ndeleting the object')
     requests.delete(f'{URL}/{object_id}')
 
 
@@ -51,10 +51,26 @@ def test_get_all_objects(before_after_test):
     ("red", "medium", "third"), ])
 def test_add_object(before_after_test, new_object_id, color, size, name):
     body = {"data": {"color": color, "size": size}, "name": name}
-
     response = requests.post(URL, json=body, headers=HEADERS)
     assert response.status_code == 200
     assert response.json()["data"]["size"] == size
+
+
+def test_put_an_object(before_after_test, new_object_id):
+    body = {"data": {"color": "green", "size": "small"}, "name": "aboba"}
+    response = requests.put(f'{URL}/{new_object_id}', json=body, headers=HEADERS).json()
+    assert response['data']['color'] == 'green'
+
+
+def test_patch_an_object(before_after_test, new_object_id):
+    body = {"name": "Danil"}
+    response = requests.patch(f'{URL}/{new_object_id}', json=body, headers=HEADERS).json()
+    assert response['name'] == 'Danil'
+
+
+def test_delete_an_object(before_after_test, new_object_id):
+    response = requests.delete(f'{URL}/{new_object_id}')
+    assert response.status_code == 200
 
 
 @pytest.mark.regression
