@@ -1,7 +1,5 @@
 import pytest
-
-PARAMETRIZE_DATA = [("black", "big", "new"), ("white", "small", "second")]
-DEFAULT_DATA = {"data": {"color": "green", "size": "small"}, "name": "aboba"}
+from data import *
 
 
 def test_get_one_object(create_object_endpoint):
@@ -11,7 +9,7 @@ def test_get_one_object(create_object_endpoint):
 
 
 def test_get_all_objects(get_all_objects):
-    get_all_objects.request_to_objects()
+    get_all_objects.request_to_url()
     get_all_objects.check_that_status_is_200()
 
 
@@ -23,30 +21,16 @@ def test_add_object(create_object_endpoint, color, size, name):
     create_object_endpoint.check_response_name_is_correct(body["name"])
 
 
-def test_put_an_object(update_object_endpoint, create_object_endpoint):
-    body = {"data": {"color": "red", "size": "big"}, "name": "aboba"}
-    create_object_endpoint.create_new_object(DEFAULT_DATA)
-    create_object_endpoint.check_that_status_is_200()
-    object_id = create_object_endpoint.get_object_id()
-
-    update_object_endpoint.put_method(body, object_id)
+def test_put_an_object(update_object_endpoint, object_id):
+    update_object_endpoint.put_method(DATA_PUT_METHOD, object_id)
     update_object_endpoint.check_that_status_is_200()
 
 
-def test_patch_an_object(update_object_endpoint, create_object_endpoint):
-    body = {"name": "Egor"}
-    create_object_endpoint.create_new_object(DEFAULT_DATA)
-    create_object_endpoint.check_that_status_is_200()
-    object_id = create_object_endpoint.get_object_id()
-
-    update_object_endpoint.patch_method(body, object_id)
+def test_patch_an_object(update_object_endpoint, object_id):
+    update_object_endpoint.patch_method(DATA_PATCH_METHOD, object_id)
     update_object_endpoint.check_that_status_is_200()
 
 
-def test_delete_an_object(delete_object_endpoint, create_object_endpoint):
-    create_object_endpoint.create_new_object(DEFAULT_DATA)
-    create_object_endpoint.check_that_status_is_200()
-    object_id = create_object_endpoint.get_object_id()
-
+def test_delete_an_object(delete_object_endpoint, object_id):
     delete_object_endpoint.delete_object(object_id)
     delete_object_endpoint.check_that_status_is_200()
