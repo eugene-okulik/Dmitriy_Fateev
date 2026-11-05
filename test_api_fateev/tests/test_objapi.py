@@ -1,5 +1,5 @@
 import pytest
-from data import *
+from data import DEFAULT_DATA, PARAMETRIZE_DATA, DATA_PUT_METHOD, DATA_PATCH_METHOD
 
 
 def test_get_one_object(create_object_endpoint):
