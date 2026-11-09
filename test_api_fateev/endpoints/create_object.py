@@ -1,10 +1,9 @@
 import requests
 import allure
-from Endpoints.endpoint import EndPoint
+from test_api_fateev.endpoints.endpoint import EndPoint
 
 
 class CreateObject(EndPoint):
-    url = f"{EndPoint.url}/object"
 
     @allure.step("Create object")
     def create_new_object(self, body, headers=None):
@@ -12,10 +11,6 @@ class CreateObject(EndPoint):
         self.response = requests.post(self.url, json=body, headers=headers)
         return self.response
 
-    @allure.step("Check that title is the same as sent")
-    def check_response_name_is_correct(self, name):
-        assert self.response.json()["name"] == name
-
-    @allure.step("Return post_id")
+    @allure.step("Return object`s id")
     def get_object_id(self):
         return self.response.json()["id"]

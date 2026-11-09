@@ -1,5 +1,5 @@
 class EndPoint:
-    url = 'http://objapi.course.qa-practice.com'
+    url = 'http://objapi.course.qa-practice.com/object'
     headers = {'Content-Type': 'application/json'}
     response = None
 

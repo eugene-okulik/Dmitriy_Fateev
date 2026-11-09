@@ -1,10 +1,9 @@
 import requests
 import allure
-from Endpoints.endpoint import EndPoint
+from test_api_fateev.endpoints.endpoint import EndPoint
 
 
 class DeleteObject(EndPoint):
-    url = f"{EndPoint.url}/object"
 
     @allure.step("Delete object")
     def delete_object(self, object_id, headers=None):
